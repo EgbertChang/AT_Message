@@ -1,0 +1,90 @@
+//
+//  LeftCellLayout.swift
+//  AT_Message
+//
+//  Created by Egbert Chang on 14/11/2017.
+//  Copyright © 2017 Aleph Tdu. All rights reserved.
+//
+
+import UIKit
+
+
+class LeftCellLayout {
+    
+    var label: UILabel!
+    var cell: UITableViewCell!
+    
+    
+    init(_ label: UILabel, tableCell cell: UITableViewCell) {
+        self.label = label
+        self.cell = cell
+    }
+    
+    func layout() {
+        self.label.translatesAutoresizingMaskIntoConstraints = false
+        
+        // (1) 给self.label添加自动布局
+        // width
+        NSLayoutConstraint(
+            item: self.label,
+            attribute: NSLayoutAttribute.width,
+            relatedBy: NSLayoutRelation.equal,
+            toItem: nil,
+            attribute: NSLayoutAttribute.notAnAttribute,
+            multiplier: 0,
+            constant: 200).isActive = false
+        
+        // height
+        NSLayoutConstraint(
+            item: self.label,
+            attribute: NSLayoutAttribute.height,
+            relatedBy: NSLayoutRelation.equal,
+            toItem: nil,
+            attribute: NSLayoutAttribute.notAnAttribute,
+            multiplier: 0,
+            constant: 60).isActive = false
+        
+        // left
+        NSLayoutConstraint(
+            item: self.label,
+            attribute: NSLayoutAttribute.left,
+            relatedBy: NSLayoutRelation.equal,
+            toItem: self.cell.contentView,
+            attribute: NSLayoutAttribute.left,
+            multiplier: 1.0,
+            constant: 20).isActive = true
+        
+        // right
+        NSLayoutConstraint(
+            item: self.label,
+            attribute: NSLayoutAttribute.right,
+            relatedBy: NSLayoutRelation.equal,
+            toItem: self.cell.contentView,
+            attribute: NSLayoutAttribute.right,
+            multiplier: 1.0,
+            constant: -20).isActive = true
+        
+        // top
+        NSLayoutConstraint(
+            item: self.label,
+            attribute: NSLayoutAttribute.top,
+            relatedBy: NSLayoutRelation.equal,
+            toItem: self.cell.contentView,
+            attribute: NSLayoutAttribute.top,
+            multiplier: 1.0,
+            constant: 10).isActive = true
+        
+        // bottom
+        NSLayoutConstraint(
+            item: self.label,
+            attribute: NSLayoutAttribute.bottom,
+            relatedBy: NSLayoutRelation.equal,
+            toItem: self.cell.contentView,
+            attribute: NSLayoutAttribute.bottom,
+            multiplier: 1.0,
+            constant: -10).isActive = true
+        
+        
+        // (2) 给self.cell.contentView添加自动布局简直就是一个彻底的错误
+    }
+}
