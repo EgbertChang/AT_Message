@@ -17,6 +17,7 @@
 		F42022341FB97D8B007BDD01 /* transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42022331FB97D8B007BDD01 /* transform.swift */; };
 		F4282FCB1FB460F6002DC671 /* AT_Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4282FCA1FB460F6002DC671 /* AT_Label.swift */; };
 		F4282FCE1FB462E5002DC671 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4282FCD1FB462E5002DC671 /* UIColor.swift */; };
+		F4D4DC1A1FBBE3B0001055F8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D4DC191FBBE3B0001055F8 /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		F42022331FB97D8B007BDD01 /* transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transform.swift; sourceTree = "<group>"; };
 		F4282FCA1FB460F6002DC671 /* AT_Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AT_Label.swift; sourceTree = "<group>"; };
 		F4282FCD1FB462E5002DC671 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		F4D4DC191FBBE3B0001055F8 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				F4282FCD1FB462E5002DC671 /* UIColor.swift */,
+				F4D4DC191FBBE3B0001055F8 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				F41BCD8A1FBA820E00405983 /* LeftCellLayout.swift in Sources */,
 				0F7A6DEF1FAF780E00340DD3 /* ViewController.swift in Sources */,
 				0F7A6DED1FAF780E00340DD3 /* AppDelegate.swift in Sources */,
+				F4D4DC1A1FBBE3B0001055F8 /* String.swift in Sources */,
 				F42022341FB97D8B007BDD01 /* transform.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

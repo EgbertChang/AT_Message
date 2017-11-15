@@ -12,9 +12,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     var label: UILabel!
     var table: UITableView!
-    var data: [String] = ["南京", "北京", "杭州", "上海", "广州", "深圳", "香港", "重庆",
+    var data1: [String] = ["南京", "北京", "杭州", "上海", "广州", "深圳", "香港", "重庆",
                           "苏州", "保定", "哈尔冰", "青岛", "大连", "太原", "乌镇", "温州",
-                          "金华", "丽水", "广西", "南宁", "大理", "桂林",]
+                          "金陵", "丽水", "广西", "南宁", "大理", "桂林",]
+    
+    var data: [String] = ["iuyfoiewuoiweuoifu09238409283oiehfoiwhefowehfoiwehfoiwehfohweifkjnbakjbkabf", "2973823749827fjiwelsfhlksjfldksfladjf;lsdk;flksdl;k;dlflksjflkjdslkfjdlkjflkdsjflkajldkfjlksdjflsajdflkjasdlkfjldskjflkasdjflkjsadlkfjlkdsajflkadsjflkjasdlkfjlaskdfjlkdjsflkajsdlfkjadlkfjklsdjfkljdslfkjldskjflkdjflksdjflkjjoiwefowewefffwwwjjjjjks", "034092384908234", "98749283748932749ou09u90jflsdjflkdsj8327948239874", "历厉害覅分红四哦哦自己建等待解看", "历史", "历史的"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         table.rowHeight = UITableViewAutomaticDimension   // 自动撑开高度
         table.register(LeftCell.self, forCellReuseIdentifier: "left")
         // table.register(UITableViewCell.self, forCellReuseIdentifier: "default")
+        table.separatorStyle = UITableViewCellSeparatorStyle.none
         self.view.addSubview(table)
         
         
@@ -53,9 +56,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.view.addSubview(button3)
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // let cell = UITableViewCell(style: .default, reuseIdentifier: "default")
@@ -67,10 +72,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // cell.textLabel?.numberOfLines = 0
         // cell.textLabel?.text = "03u029u40923uiofijioq018098iuhiuhewifoijowijfoiwejfowjeofijwiofjoiwejfoiejfoiwejfoiwjeoifjoweijfoiwejfoijweofijweoifjoiwejfoiwejfoiwjefiojweiofjsknvsdlkvnlsdkvnlksdvhowijiownejfoiwenjfoidkvnsldnvlsdnvsoihvoewhovihsdivsjvnkjsdnvksjdnvkjsdnvkjsdnjk"
         
-        cell.labelText = "03u029u40923uiofijioq018098iuhiuhewifoijowijfoiwejfowjeofijwiofjoiwejfoiejfoiwejfoiwjeoifjoweijfoiwejfoijweofijweoifjoiwejfoiwejfoiwjefiojweiofjsknvsdlkvnlsdkvnlksdvhowijiownejfoiwenjfoidkvnsldnvlsdnvsoihvoewhovihsdivsjvnkjsdnvksjdnvkjsdnvkjsdnjk"
-        
         // cell.textLabel?.text = ""
-        // cell.labelText = data[indexPath.row]
+        //print("refresh")
+        //print(data)
+        
+        cell.labelText = data[indexPath.row]
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         
         return cell
     }
@@ -90,6 +97,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             print("finish animation ... ")
         }
     }
+    
     
     @objc func recoverTable(sender: UIButton) {
         self.table.transform = CGAffineTransform.identity

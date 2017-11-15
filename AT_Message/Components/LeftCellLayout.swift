@@ -13,36 +13,45 @@ class LeftCellLayout {
     
     var label: UILabel!
     var cell: UITableViewCell!
+    var constraintWidth: NSLayoutConstraint!
+    var constraintHeight: NSLayoutConstraint!
     
     
-    init(_ label: UILabel, tableCell cell: UITableViewCell) {
+    init(cellLabel label: UILabel, tableCell cell: UITableViewCell) {
         self.label = label
         self.cell = cell
     }
+    
+    func reloadCell(cellLabelRect rect: CGRect) {
+        constraintWidth.constant = rect.width + 20
+    }
+    
     
     func layout() {
         self.label.translatesAutoresizingMaskIntoConstraints = false
         
         // (1) 给self.label添加自动布局
         // width
-        NSLayoutConstraint(
+        constraintWidth = NSLayoutConstraint(
             item: self.label,
             attribute: NSLayoutAttribute.width,
             relatedBy: NSLayoutRelation.equal,
             toItem: nil,
             attribute: NSLayoutAttribute.notAnAttribute,
             multiplier: 0,
-            constant: 200).isActive = false
+            constant: 0)
+        constraintWidth.isActive = true
         
         // height
-        NSLayoutConstraint(
+        constraintHeight = NSLayoutConstraint(
             item: self.label,
             attribute: NSLayoutAttribute.height,
             relatedBy: NSLayoutRelation.equal,
             toItem: nil,
             attribute: NSLayoutAttribute.notAnAttribute,
             multiplier: 0,
-            constant: 60).isActive = false
+            constant: 60)
+        constraintHeight.isActive = false
         
         // left
         NSLayoutConstraint(
@@ -62,7 +71,7 @@ class LeftCellLayout {
             toItem: self.cell.contentView,
             attribute: NSLayoutAttribute.right,
             multiplier: 1.0,
-            constant: -20).isActive = true
+            constant: -20).isActive = false
         
         // top
         NSLayoutConstraint(
@@ -83,7 +92,6 @@ class LeftCellLayout {
             attribute: NSLayoutAttribute.bottom,
             multiplier: 1.0,
             constant: -10).isActive = true
-        
         
         // (2) 给self.cell.contentView添加自动布局简直就是一个彻底的错误
     }
