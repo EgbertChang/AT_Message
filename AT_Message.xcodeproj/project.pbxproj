@@ -12,12 +12,17 @@
 		0F7A6DF21FAF780E00340DD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7A6DF01FAF780E00340DD3 /* Main.storyboard */; };
 		0F7A6DF41FAF780E00340DD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F7A6DF31FAF780E00340DD3 /* Assets.xcassets */; };
 		0F7A6DF71FAF780E00340DD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7A6DF51FAF780E00340DD3 /* LaunchScreen.storyboard */; };
+		F4047BD21FBD3B5A00DED66B /* rightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4047BD11FBD3B5A00DED66B /* rightCell.swift */; };
+		F4047BD41FBD3B7E00DED66B /* rightCellLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4047BD31FBD3B7E00DED66B /* rightCellLayout.swift */; };
 		F40744B81FB982CB00D91B73 /* LeftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40744B71FB982CB00D91B73 /* LeftCell.swift */; };
 		F41BCD8A1FBA820E00405983 /* LeftCellLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41BCD891FBA820E00405983 /* LeftCellLayout.swift */; };
 		F42022341FB97D8B007BDD01 /* transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42022331FB97D8B007BDD01 /* transform.swift */; };
 		F4282FCB1FB460F6002DC671 /* AT_Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4282FCA1FB460F6002DC671 /* AT_Label.swift */; };
 		F4282FCE1FB462E5002DC671 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4282FCD1FB462E5002DC671 /* UIColor.swift */; };
 		F4D4DC1A1FBBE3B0001055F8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D4DC191FBBE3B0001055F8 /* String.swift */; };
+		F4DE202E1FBD81BF001E66A1 /* AddMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DE202D1FBD81BF001E66A1 /* AddMessage.swift */; };
+		F4DE20301FBD83E3001E66A1 /* MessageInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DE202F1FBD83E3001E66A1 /* MessageInput.swift */; };
+		F4DE20351FBD8DD3001E66A1 /* assembled.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DE20341FBD8DD3001E66A1 /* assembled.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,12 +33,17 @@
 		0F7A6DF31FAF780E00340DD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F7A6DF61FAF780E00340DD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F7A6DF81FAF780E00340DD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4047BD11FBD3B5A00DED66B /* rightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rightCell.swift; sourceTree = "<group>"; };
+		F4047BD31FBD3B7E00DED66B /* rightCellLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rightCellLayout.swift; sourceTree = "<group>"; };
 		F40744B71FB982CB00D91B73 /* LeftCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftCell.swift; sourceTree = "<group>"; };
 		F41BCD891FBA820E00405983 /* LeftCellLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftCellLayout.swift; sourceTree = "<group>"; };
 		F42022331FB97D8B007BDD01 /* transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transform.swift; sourceTree = "<group>"; };
 		F4282FCA1FB460F6002DC671 /* AT_Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AT_Label.swift; sourceTree = "<group>"; };
 		F4282FCD1FB462E5002DC671 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		F4D4DC191FBBE3B0001055F8 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		F4DE202D1FBD81BF001E66A1 /* AddMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMessage.swift; sourceTree = "<group>"; };
+		F4DE202F1FBD83E3001E66A1 /* MessageInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInput.swift; sourceTree = "<group>"; };
+		F4DE20341FBD8DD3001E66A1 /* assembled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = assembled.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +93,9 @@
 		F40744B61FB982A400D91B73 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				F40744B71FB982CB00D91B73 /* LeftCell.swift */,
-				F41BCD891FBA820E00405983 /* LeftCellLayout.swift */,
+				F4DE202C1FBD819D001E66A1 /* Fire */,
+				F4DE202B1FBD7E53001E66A1 /* MessageInput */,
+				F4DE202A1FBD78D3001E66A1 /* MessageCell */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -112,6 +123,34 @@
 				F4D4DC191FBBE3B0001055F8 /* String.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F4DE202A1FBD78D3001E66A1 /* MessageCell */ = {
+			isa = PBXGroup;
+			children = (
+				F40744B71FB982CB00D91B73 /* LeftCell.swift */,
+				F41BCD891FBA820E00405983 /* LeftCellLayout.swift */,
+				F4047BD11FBD3B5A00DED66B /* rightCell.swift */,
+				F4047BD31FBD3B7E00DED66B /* rightCellLayout.swift */,
+			);
+			path = MessageCell;
+			sourceTree = "<group>";
+		};
+		F4DE202B1FBD7E53001E66A1 /* MessageInput */ = {
+			isa = PBXGroup;
+			children = (
+				F4DE202F1FBD83E3001E66A1 /* MessageInput.swift */,
+				F4DE20341FBD8DD3001E66A1 /* assembled.swift */,
+			);
+			path = MessageInput;
+			sourceTree = "<group>";
+		};
+		F4DE202C1FBD819D001E66A1 /* Fire */ = {
+			isa = PBXGroup;
+			children = (
+				F4DE202D1FBD81BF001E66A1 /* AddMessage.swift */,
+			);
+			path = Fire;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,12 +227,17 @@
 			files = (
 				F40744B81FB982CB00D91B73 /* LeftCell.swift in Sources */,
 				F4282FCB1FB460F6002DC671 /* AT_Label.swift in Sources */,
+				F4047BD41FBD3B7E00DED66B /* rightCellLayout.swift in Sources */,
+				F4DE20351FBD8DD3001E66A1 /* assembled.swift in Sources */,
 				F4282FCE1FB462E5002DC671 /* UIColor.swift in Sources */,
 				F41BCD8A1FBA820E00405983 /* LeftCellLayout.swift in Sources */,
 				0F7A6DEF1FAF780E00340DD3 /* ViewController.swift in Sources */,
+				F4DE20301FBD83E3001E66A1 /* MessageInput.swift in Sources */,
 				0F7A6DED1FAF780E00340DD3 /* AppDelegate.swift in Sources */,
 				F4D4DC1A1FBBE3B0001055F8 /* String.swift in Sources */,
+				F4047BD21FBD3B5A00DED66B /* rightCell.swift in Sources */,
 				F42022341FB97D8B007BDD01 /* transform.swift in Sources */,
+				F4DE202E1FBD81BF001E66A1 /* AddMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
