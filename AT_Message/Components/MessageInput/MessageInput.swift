@@ -16,6 +16,7 @@ class MessageInput: UIView, UITextViewDelegate {
     var heightConstraintForSelf: NSLayoutConstraint!
     var heightForSelf: CGFloat = 0.0
     var preHeight: CGFloat = 37.0
+    var maxHeight: CGFloat = 152.66666667
     weak var puzzle: ViewController!   // 当前组件作为puzzle的一个拼块
     
     
@@ -40,19 +41,19 @@ class MessageInput: UIView, UITextViewDelegate {
     // 发送信息
     func handleSendMessage() {
         if (self.textView.text != "") {
+            
+            // self.puzzle.data.append(self.textView.text)
+            // self.puzzle.table.reloadData()
+            
+            
             self.puzzle.data.append(self.textView.text)
+            self.puzzle.table.beginUpdates()
+            let indexPaths = [IndexPath(row: self.puzzle.data.count - 1, section: 0)]
+            self.puzzle.table.insertRows(at: indexPaths, with: UITableViewRowAnimation.automatic)
+            self.puzzle.table.endUpdates()
             
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.01, execute: {
-                self.puzzle.table.reloadData()
-            })
             
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1, execute: {
-                self.puzzle.table.scrollToRow(
-                    at: IndexPath(row: self.puzzle.data.count - 1, section: 0),
-                    at: UITableViewScrollPosition.bottom,
-                    animated: true)
-            })
-            
+            self.puzzle.table.layoutIfNeeded()
             self.textView.text = ""
             heightForInputPart(self.textView)
         }
@@ -69,53 +70,47 @@ class MessageInput: UIView, UITextViewDelegate {
     }
     
     // 计算输入组件的约束高度
+    // 关于输入高度和输入框文本的行高，这些细节需要后期的调整
+    // TODO: 在输入内容较多的情况下，输入文本框底部几乎没有空隙（太窄）
     func heightForInputPart(_ textView: UITextView) {
         
-        let height = heightForTextView(textView)
+        var height = heightForTextView(textView)
+        if height > self.maxHeight {
+            height = self.maxHeight
+        }
         
-        if (height > self.preHeight || height < self.preHeight) {
+        if height > self.preHeight || height < self.preHeight {
             self.preHeight = height
             
             self.puzzle.inputPart.textView.adjustsFontForContentSizeCategory = true    // 虽然不明白这行代码的意思，但是加上并没有什么问题
             self.puzzle.heightForConstraintForTable.constant = self.puzzle.view.bounds.height - height   // 这行代码导致输入失焦。但是后来莫名其妙的又好了。
             self.puzzle.inputPart.heightConstraintForSelf.constant = height
             
-            self.puzzle.table.setNeedsUpdateConstraints()
-            self.puzzle.inputPart.setNeedsUpdateConstraints()
-            self.puzzle.table.updateConstraintsIfNeeded()        // 可以不调用
-            self.puzzle.inputPart.updateConstraintsIfNeeded()    // 可以不调用
+            // self.puzzle.table.setNeedsUpdateConstraints()
+            // self.puzzle.inputPart.setNeedsUpdateConstraints()
+            // self.puzzle.table.updateConstraintsIfNeeded()        // 可以不调用
+            // self.puzzle.inputPart.updateConstraintsIfNeeded()    // 可以不调用
+            self.puzzle.view.setNeedsUpdateConstraints()
             
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.02, execute: {
-                
-                let contentSize = self.textView.contentSize
-                //textView的高度减去文字高度除以2就是Y方向的偏移量，也就是textView的上内边距
-                //let offsetY = (self.textView.frame.size.height - contentSize.height)/2
-                //let offset = UIEdgeInsetsMake(5, 0, 5, 0);
-                
-                //根据前面计算设置textView的ContentSize和Y方向偏移量
-                self.textView.contentSize = contentSize
-                // self.textView.contentInset = offset
-                
-                let range = NSMakeRange(0, 1)    // 下面两行代码是实现文本居于输入框中心的关键代码
-                self.textView.scrollRangeToVisible(range)
-            })
+            let range = NSMakeRange(0, 1)    // 下面两行代码是实现文本居于输入框中心的关键代码
+            self.textView.scrollRangeToVisible(range)
             
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.04, execute: {
-                self.layoutIfNeeded()
-                self.inputView?.layoutIfNeeded()
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                // self.layoutIfNeeded()
+                // self.inputView?.layoutIfNeeded()
                 self.puzzle.view.layoutIfNeeded()
-            })
-            
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.06, execute: {
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.puzzle.table.scrollToRow(
-                        at: IndexPath(row: self.puzzle.data.count - 1, section: 0),
-                        at: UITableViewScrollPosition.bottom,
-                        animated: false)
-                    self.layoutIfNeeded()
-                    self.inputView?.layoutIfNeeded()
-                    self.puzzle.view.layoutIfNeeded()
-                })
+                
+                // scrollToRow不能和自动布局同时使用
+                // 好奇怪，这个动画的效果一定要放在layoutIfNeeded()的后面执行
+                // self.puzzle.table.scrollToRow(
+                //    at: IndexPath(row: self.puzzle.data.count - 1, section: 0),
+                //    at: UITableViewScrollPosition.bottom,
+                //    animated: false)
+                
+                // 下面两行是自动滚动到表格底部
+                let offset = CGPoint(x:0, y:self.puzzle.table.contentSize.height - self.puzzle.table.bounds.size.height)
+                self.puzzle.table.setContentOffset(offset, animated: true)
             })
         }
     }
@@ -265,26 +260,4 @@ class MessageInput: UIView, UITextViewDelegate {
 /* 类扩展
  * 实现UITextView的委托方法
  */
-extension MessageInput {
-    
-    // 在这里计算puzzle的约束高度
-//    func textViewDidChange(_ textView: UITextView) {
-//        // print(textView.text)
-//        // print(textView.frame)  输出的值(left, right, width, height) width和height已经包含了padding和margin2
-//        let constraintSize = CGSize(width: textView.frame.size.width, height: CGFloat.greatestFiniteMagnitude)
-//        let textViewFitSize = textView.sizeThatFits(constraintSize)
-//
-//        if (textViewFitSize.height > 30) {
-//
-//            self.puzzle.inputPart.heightConstraintForSelf.constant = 60
-//
-//        }
-//
-//         if (textViewFitSize.height != heightForSelf) {
-//             self.puzzle.inputPart.heightConstraintForSelf.constant = textViewFitSize.height + 10
-//             self.puzzle.inputPart.heightConstraintForSelf.constant = textViewFitSize.height
-//             self.heightForSelf = textViewFitSize.height
-//         }
-//    }
-    
-}
+extension MessageInput {}

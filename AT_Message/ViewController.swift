@@ -37,8 +37,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // self.navigationController?.navigationBar.backItem?.title = "热门城市"
 
         
-        
-        
         // 组装输入组件到“视图控制器”上
         assembleInput(puzzle: self)
         assembleTable()
@@ -170,11 +168,11 @@ extension ViewController {
     // 由于willDisplayCell是异步调用的，所以在上面的block里面不能即时更新UI，最好使用GCD通过主线程加上你的代码
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row ==  self.data.count - 1 {
+            print("Enter ...")
             DispatchQueue.main.async {
-                self.table.scrollToRow(
-                    at: IndexPath(row: self.data.count - 1, section: 0),
-                    at: UITableViewScrollPosition.bottom,
-                    animated: true)
+                // UIView.animate(withDuration: 0.3, animations: {})
+                let offset = CGPoint(x:0, y:self.table.contentSize.height - self.table.bounds.size.height)
+                self.table.setContentOffset(offset, animated: true)
             }
         }
     }
@@ -187,7 +185,7 @@ extension ViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // let cell = UITableViewCell(style: .default, reuseIdentifier: "default")
-        
+
         if indexPath.row % 2 == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "left") as? LeftCell
             cell?.textViewText = data[indexPath.row]
