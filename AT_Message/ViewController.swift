@@ -18,7 +18,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var data1: [String] = ["南京", "北京", "杭州", "上海", "广州", "深圳", "香港", "重庆",
                           "苏州", "保定", "哈尔冰", "青岛", "大连", "太原", "乌镇", "温州",
-                          "金陵", "丽水", "广西", "南宁", "大理", "桂林",]
+                          "金陵", "丽水", "广西", "南宁", "大理", "桂林", "北京"]
     
     
     var data: [String] = ["iuyfoiewuoiweuoifu09238409283oiehfoiwhefowehfoiwehfoiwehfohweifkjnbakjbkabf", "2973823749827fjiwelsfhlksjfldksfladjf;lsdk;flksdl;k;dlflksjflkjdslkfjdlkjflkdsjflkajldkfjlksdjflsajdflkjasdlkfjldskjflkasdjflkjsadlkfjlkdsajflkadsjflkjasdlkfjlaskdfjlkdjsflkajsdlfkjadlkfjklsdjfkljdslfkjldskjflkdjflksdjflkjjoiwefowewefffwwwjjjjjks",
