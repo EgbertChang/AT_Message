@@ -19,3 +19,10 @@ DerivedData
 *.xcuserstate
 # Pods - for those of you who use CocoaPods
 #Pods
+*.xcuserstate
+
+project.xcworkspace  
+UserInterfaceState.xcuserstate  
+project.xcworkspace/  
+xcuserdata/  
+UserInterface.xcuserstate
