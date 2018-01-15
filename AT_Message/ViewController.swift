@@ -20,7 +20,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                           "苏州", "保定", "哈尔冰", "青岛", "大连", "太原", "乌镇", "温州",
                           "金陵", "丽水", "广西", "南宁", "大理", "桂林", "北京"]
     
-    
+
     var data: [String] = ["iuyfoiewuoiweuoifu09238409283oiehfoiwhefowehfoiwehfoiwehfohweifkjnbakjbkabf", "2973823749827fjiwelsfhlksjfldksfladjf;lsdk;flksdl;k;dlflksjflkjdslkfjdlkjflkdsjflkajldkfjlksdjflsajdflkjasdlkfjldskjflkasdjflkjsadlkfjlkdsajflkadsjflkjasdlkfjlaskdfjlkdjsflkajsdlfkjadlkfjklsdjfkljdslfkjldskjflkdjflksdjflkjjoiwefowewefffwwwjjjjjks",
                           "034092384908234",
                           "98749283748932749ou09u90jflsdjflkdsj8327948239874",
