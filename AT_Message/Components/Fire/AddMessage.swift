@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension ViewController {
+extension ChatViewController {
     
     func addMessage() {
         let button1 = UIButton(frame: CGRect(x: 38, y: self.view.bounds.height - 60, width: 100, height: 40))

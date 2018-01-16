@@ -9,9 +9,9 @@
 import UIKit
 
 
-extension ViewController {
+extension ChatViewController {
     
-    func assembleInput(puzzle viewController: ViewController) {
+    func assembleInput(puzzle viewController: ChatViewController) {
         
         inputPart = MessageInput(puzzle: viewController)
         self.view.addSubview(inputPart)

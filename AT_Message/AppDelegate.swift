@@ -16,6 +16,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let screen: CGRect = UIScreen.main.bounds
+        window = UIWindow(frame: screen)
+        window?.backgroundColor = UIColor.white
+        let nav1 = UINavigationController.init(rootViewController: ChatListViewController())
+        nav1.tabBarItem.title = "Chat"
+        let nav2 = UINavigationController.init(rootViewController: ContactsViewController())
+        nav2.tabBarItem.title = "Contacts"
+        let nav3 = UINavigationController.init(rootViewController: FocusViewController())
+        nav3.tabBarItem.title = "Focus"
+        let nav4 = UINavigationController.init(rootViewController: SettingsViewController())
+        nav4.tabBarItem.title = "Settings"
+        
+        let tabBar = UITabBarController()
+        tabBar.selectedIndex = 0
+        tabBar.viewControllers = [nav1, nav2, nav3, nav4]
+        window?.rootViewController = tabBar
+        window?.makeKeyAndVisible()
+        
         return true
     }
 

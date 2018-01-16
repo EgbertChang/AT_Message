@@ -17,7 +17,7 @@ class MessageInput: UIView, UITextViewDelegate {
     var heightForSelf: CGFloat = 0.0
     var preHeight: CGFloat = 37.0
     var maxHeight: CGFloat = 152.66666667
-    weak var puzzle: ViewController!   // 当前组件作为puzzle的一个拼块
+    weak var puzzle: ChatViewController!   // 当前组件作为puzzle的一个拼块
     
     
     override init(frame: CGRect) {
@@ -31,7 +31,7 @@ class MessageInput: UIView, UITextViewDelegate {
     }
     
     
-    convenience init(puzzle viewController: ViewController) {
+    convenience init(puzzle viewController: ChatViewController) {
         self.init(frame: CGRect())
         self.puzzle = viewController
         self.sendButton.addTarget(self, action: #selector(self.sendMessage), for: UIControlEvents.touchUpInside)
@@ -42,8 +42,8 @@ class MessageInput: UIView, UITextViewDelegate {
     func handleSendMessage() {
         if (self.textView.text != "") {
             
-            // self.puzzle.data.append(self.textView.text)
-            // self.puzzle.table.reloadData()
+            //self.puzzle.data.append(self.textView.text)
+            //self.puzzle.table.reloadData()
             
             
             self.puzzle.data.append(self.textView.text)
@@ -53,9 +53,26 @@ class MessageInput: UIView, UITextViewDelegate {
             self.puzzle.table.endUpdates()
             
             
-            self.puzzle.table.layoutIfNeeded()
             self.textView.text = ""
             heightForInputPart(self.textView)
+            
+            // 使用asyncAfter()而不是async()是因为后者依然会导致“刷新视图滞后”的问题
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1, execute: {
+                // UIView.animate(withDuration: 0.3, animations: {})
+                let offset = CGPoint(x:0, y:self.puzzle.table.contentSize.height - self.puzzle.table.bounds.size.height)
+                // 刚进入对话页面，不要使用动画。但这里在新增的一条新的信息时，又需要使用动画
+                self.puzzle.table.setContentOffset(offset, animated: true)
+                self.puzzle.table.layoutIfNeeded()
+            })
+            
+            // 这个版本的异步执行不要使用
+            DispatchQueue.main.async{
+                //UIView.animate(withDuration: 0.3, animations: {})
+                //let offset = CGPoint(x:0, y:self.puzzle.table.contentSize.height - self.puzzle.table.bounds.size.height)
+                //刚进入对话页面，不要使用动画。但这里在新增的一条新的信息时，又需要使用动画
+                //self.puzzle.table.setContentOffset(offset, animated: true)
+                //self.puzzle.table.layoutIfNeeded()
+            }
         }
     }
     
